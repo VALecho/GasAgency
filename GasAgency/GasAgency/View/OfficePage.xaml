@@ -40,12 +40,13 @@
                                 </dataGrid:SfDataGrid.CaptionSummaryRow>
                             </dataGrid:SfDataGrid>
                             <Button Text="New Sale"
+                                    TextColor="White"
                                     Grid.Row="1"
                                     HorizontalOptions="End"
                                     Margin="10"
                                     BackgroundColor="#2B5496"
                                     CornerRadius="10"
-                                    Command="{Binding NewSaleCommand}"/>
+                                    Command="{Binding NewSalesTappedCommand}"/>
                         </Grid>
                     </tabs:SfTabItem.Content>
                 </tabs:SfTabItem>
