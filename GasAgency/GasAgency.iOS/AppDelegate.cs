@@ -22,9 +22,11 @@ namespace GasAgency.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            new Syncfusion.XForms.iOS.ComboBox.SfComboBoxRenderer();
             global::Xamarin.Forms.Forms.Init();
+            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
+            Syncfusion.SfDataGrid.XForms.iOS.SfDataGridRenderer.Init();
             LoadApplication(new App());
-
             return base.FinishedLaunching(app, options);
         }
     }

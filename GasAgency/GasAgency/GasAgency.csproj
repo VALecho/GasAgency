@@ -15,12 +15,28 @@
     <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="16.3.0.21" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="16.3.0.21" />
     <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="16.3.0.21" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="16.3.0.21" />
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="View\" />
-    <Folder Include="ViewModel\" />
+    <Compile Update="View\DashboardPage.xaml.cs">
+      <DependentUpon>DashboardPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="View\CreditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\HawkerSalesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\OfficePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\SummaryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

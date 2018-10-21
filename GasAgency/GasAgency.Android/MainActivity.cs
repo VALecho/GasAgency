@@ -14,6 +14,7 @@ namespace GasAgency.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            RequestedOrientation = ScreenOrientation.Landscape;
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
