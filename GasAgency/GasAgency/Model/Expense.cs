@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GasAgency.Model
 {
-    class Expense: ObservableObject
+    public class Expense: ObservableObject
     {
         private string description;
 

@@ -1,5 +1,4 @@
-﻿using GasAgency.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace GasAgency.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class OfficePage : ContentPage
+	public partial class NewSalePage : ContentPage
 	{
-		public OfficePage ()
+		public NewSalePage ()
 		{
 			InitializeComponent ();
-            var t = new OfficePageViewModel();
-            this.BindingContext = new OfficePageViewModel();
-		}       
-    }
+		}
+	}
 }

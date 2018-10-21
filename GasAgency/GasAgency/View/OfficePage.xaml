@@ -10,10 +10,15 @@
                 <tabs:SfTabItem Title="Sales">
                     <tabs:SfTabItem.Content>
                         <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
                             <dataGrid:SfDataGrid x:Name="salesDataGrid"
-                                             ItemsSource="{Binding OfficeSales}"
-                                             AutoGenerateColumns="False"
-                                             ColumnSizer="Star">
+                                                 ItemsSource="{Binding OfficeSales}"
+                                                 AutoGenerateColumns="False"
+                                                 ColumnSizer="Star"
+                                                 Grid.Row="0">
                                 <dataGrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
                                     <dataGrid:GridTextColumn HeaderText="Product"
                                                          MappingName="Product"/>
@@ -35,8 +40,10 @@
                                 </dataGrid:SfDataGrid.CaptionSummaryRow>
                             </dataGrid:SfDataGrid>
                             <Button Text="New Sale"
+                                    Grid.Row="1"
                                     HorizontalOptions="End"
                                     Margin="10"
+                                    BackgroundColor="#2B5496"
                                     CornerRadius="10"
                                     Command="{Binding NewSaleCommand}"/>
                         </Grid>

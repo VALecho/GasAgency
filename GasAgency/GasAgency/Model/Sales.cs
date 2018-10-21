@@ -5,7 +5,7 @@ using MvvmHelpers;
 
 namespace GasAgency.Model
 {
-    class Sales: ObservableObject
+    public class Sales: ObservableObject
     {
         private string product;
 

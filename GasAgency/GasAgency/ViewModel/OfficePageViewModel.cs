@@ -1,4 +1,5 @@
 ﻿using GasAgency.Model;
+using GasAgency.View;
 using MvvmHelpers;
 using System;
 using System.Collections.Generic;
@@ -9,19 +10,20 @@ using Xamarin.Forms;
 
 namespace GasAgency.ViewModel
 {
-    class OfficePageViewModel: BaseViewModel
+    public class OfficePageViewModel: BaseViewModel
     {
-        public ICommand NewSalesTappedCommand;
-        public ICommand NewExpenseTappedCommand;
+        public ICommand NewSalesTappedCommand { get; set; }
+        public ICommand NewExpenseTappedCommand { get; set; }
 
-        public ObservableCollection<Sales> OfficeSales = new ObservableCollection<Sales>();
-        public ObservableCollection<Expense> OfficeExpenses = new ObservableCollection<Expense>();
+        public ObservableCollection<Sales> OfficeSales { get; set; }
+        public ObservableCollection<Expense> OfficeExpenses { get; set; }
 
         public OfficePageViewModel()
         {
             NewSalesTappedCommand = new Command(NavigateToNewSalesPage);
             NewExpenseTappedCommand = new Command(NavigateToNewExpensePage);
-
+            OfficeSales = new ObservableCollection<Sales>();
+            OfficeExpenses = new ObservableCollection<Expense>();
             OfficeSales.Add(new Sales { Product = "14.2KG", Quantity = "10", Cost = "8700", Cash = "5000", Credit = "3700", Client = "Client-1"});
             OfficeSales.Add(new Sales { Product = "14.2KG", Quantity = "10", Cost = "8700", Cash = "5000", Credit = "3700", Client = "Client-1" });
             OfficeSales.Add(new Sales { Product = "14.2KG", Quantity = "10", Cost = "8700", Cash = "5000", Credit = "3700", Client = "Client-1" });
@@ -43,12 +45,12 @@ namespace GasAgency.ViewModel
 
         private void NavigateToNewExpensePage(object obj)
         {
-            throw new NotImplementedException();
+            App.Current.MainPage.Navigation.PushAsync(new NewExpensePage());
         }
 
         private void NavigateToNewSalesPage(object obj)
         {
-            throw new NotImplementedException();
+            App.Current.MainPage.Navigation.PushAsync(new NewSalePage());
         }
     }
 }
