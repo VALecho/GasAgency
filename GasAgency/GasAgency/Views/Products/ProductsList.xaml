@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Products.ProductsList">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddProductTappedCommand}"/>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteProductTappedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ListView ItemsSource="{Binding ProductAndCosts}"
+              ItemTapped="ListViewItemTapped"
+              HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="20">
+                        <Label Text="Name : " />
+                        <Label Text="{Binding CurrentProduct.Name}" />
+                        <Label Text="Cost : "/>
+                        <Label Text="{Binding CurrentProductCost.Cost}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.HawkerSales"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             Title="HAWKER SALES">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <DatePicker Grid.Row="0" Grid.Column="0" HorizontalOptions="End"/>
+            <syncfusion:SfDataGrid x:Name="salesDataGrid"
+                                   ItemsSource="{Binding HawkerSales}" 
+                                   ColumnSizer="Star" 
+                                   AutoGenerateColumns="False"
+                                   Grid.Row="1" >
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn HeaderText="Hawker Name" 
+                                               MappingName="Hawker.Name" />
+                    <syncfusion:GridTextColumn HeaderText="Product" 
+                                               MappingName="Product.Name" />
+                    <syncfusion:GridNumericColumn HeaderText="Quantity"
+                                                  MappingName="Quantity" />
+                    <syncfusion:GridTextColumn HeaderText="Cost" 
+                                               MappingName="Cost" />
+                    <syncfusion:GridTextColumn HeaderText="Transaction Mode"
+                                               MappingName="TransactionMode" />
+                    <syncfusion:GridTextColumn HeaderText="Business Name"
+                                               MappingName="Client.Name" />
+                </syncfusion:SfDataGrid.Columns>
+                <syncfusion:SfDataGrid.TableSummaryRows>
+                    <syncfusion:GridTableSummaryRow Title="Total Quantity :{TotalQuantity} | Total Cost: {TotalCost} "
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <syncfusion:GridTableSummaryRow.SummaryColumns>
+                            <syncfusion:GridSummaryColumn Name="TotalQuantity"
+                                                          Format="{}{Count}"
+                                                          MappingName="Quantity"
+                                                          SummaryType="DoubleAggregate" />
+                            <syncfusion:GridSummaryColumn Name="TotalCost"
+                                                          Format="{}{Sum:c}"
+                                                          MappingName="Cost"
+                                                          SummaryType="DoubleAggregate" />
+                        </syncfusion:GridTableSummaryRow.SummaryColumns>
+                    </syncfusion:GridTableSummaryRow>
+                </syncfusion:SfDataGrid.TableSummaryRows>
+
+            </syncfusion:SfDataGrid>
+            <Button Text="New Sale" 
+                    CornerRadius="10" 
+                    Margin="10, 0, 10, 10" 
+                    BackgroundColor="#396ec3"
+                    TextColor="White" 
+                    HorizontalOptions="End" 
+                    Grid.Row="2" Command="{Binding NewSaleCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

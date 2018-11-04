@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.NewHawkerSale"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="styleForCashLabel">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0"
+                      Padding="10,0,0,10"
+                      RowSpacing="0"
+                      Grid.ColumnSpan="3"
+                      ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Hawker Name"
+                           Grid.Row="0"/>
+                    <combobox:SfComboBox HeightRequest="20"
+                                         x:Name="comboHawkers"
+                                         Grid.Row="1" 
+                                         DataSource="{Binding Hawkers}" 
+                                         DisplayMemberPath="Name"
+                                         SelectionChanged="comboHawkers_SelectionChanged"
+                                         BackgroundColor="WhiteSmoke"/>
+                    <Label Text="Select Date"
+                           Grid.Row="0"
+                           Grid.Column="3"/>
+                    <DatePicker Grid.Row="1" Grid.Column="3"/>
+                    <Label Text="Products"
+                           Grid.Row="3"/>
+                    <combobox:SfComboBox HeightRequest="20"
+                                     x:Name="comboProduct"
+                                     Grid.Row="4"
+                                     Grid.Column="0"
+                                     DataSource="{Binding Products}"
+                                     DisplayMemberPath="Name"
+                                     SelectionChanged="comboProductsBox_SelectionChanged"
+                                         BackgroundColor="WhiteSmoke"/>
+                    <Label Grid.Row="3"
+                           Grid.Column="1"
+                           Text="Quantity"/>
+                    <numeric:SfNumericUpDown x:Name="numericQuantity"
+                                             Grid.Row="4"
+                                             Grid.Column="1"
+                                             SpinButtonAlignment="Right"
+                                             Margin="0,0,0,-6"
+                                             BackgroundColor="WhiteSmoke"/>
+                    <Label Grid.Row="3"
+                           Grid.Column="2"
+                           Text="Transaction Mode"/>
+                    <combobox:SfComboBox HeightRequest="20"
+                                         x:Name="comboMode"
+                                         Grid.Row="4"
+                                         Grid.Column="2"
+                                         DataSource="{Binding Modes}"
+                                         DisplayMemberPath="Name"
+                                         SelectionChanged="comboMode_SelectionChanged"
+                                         BackgroundColor="WhiteSmoke"/>
+                    <Label Grid.Row="3"
+                           Grid.Column="3"
+                           Text="Cost"/>
+                    <numeric:SfNumericUpDown x:Name="numericCost"
+                                             Grid.Row="4"
+                                             Grid.Column="3"
+                                             SpinButtonAlignment="Right"
+                                             Margin="0,0,0,-6"
+                                             BackgroundColor="WhiteSmoke"/>
+                    <Label Grid.Row="5"
+                           Text="Business/Clients Name"/>
+                    <combobox:SfComboBox HeightRequest="20"
+                                         x:Name="comboClients"
+                                         Grid.Row="6"
+                                         Grid.ColumnSpan="2"
+                                         DataSource="{Binding Clients}"
+                                         DisplayMemberPath="Name"
+                                         SelectionChanged="comboClients_SelectionChanged"
+                                         BackgroundColor="WhiteSmoke"/>
+                    <StackLayout Orientation="Horizontal"
+                                 Grid.Row="6"
+                                 Grid.Column="2"
+                                 Grid.ColumnSpan="2"
+                                 HorizontalOptions="EndAndExpand">
+
+                        <Button Text="Clear"
+                                Command="{Binding ClearNewHawkerSaleCommand}"/>
+                        <Button Text="Add"
+                                Command="{Binding AddNewHawkerSaleCommand}"/>
+                    </StackLayout>
+                </Grid>
+                
+                <syncfusion:SfDataGrid x:Name="newHawkerSalesDataGrid"
+                                       ItemsSource="{Binding HawkerSales}"
+                                       ColumnSizer="Star"
+                                       AutoGenerateColumns="False"
+                                       Grid.Row="1"
+                                       Grid.ColumnSpan="3">
+                    <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                        <syncfusion:GridTextColumn HeaderText="Product"
+                                                   MappingName="Product.Name"/>
+                        <syncfusion:GridNumericColumn HeaderText="Quantity"
+                                                      MappingName="Quantity"/>
+                        <syncfusion:GridTextColumn HeaderText="Cost"
+                                                   MappingName="Cost"/>
+                        <syncfusion:GridTextColumn HeaderText="Transaction Mode"
+                                                   MappingName="TransactionMode"/>
+                        <syncfusion:GridTextColumn HeaderText="Business Name"
+                                                   MappingName="Client.Name"/>
+                    </syncfusion:SfDataGrid.Columns>
+                    <syncfusion:SfDataGrid.TableSummaryRows>
+                        <syncfusion:GridTableSummaryRow Title="Total: {Total}  | Quantity: {TotalQuantity} | Cost: {TotalCost} | Cash: {TotalCash} | Credit: {TotalCredit}"
+                                                        Position="Bottom"
+                                                        ShowSummaryInRow="True">
+                            <syncfusion:GridTableSummaryRow.SummaryColumns>
+                                <syncfusion:GridSummaryColumn Name="Total"
+                                                              Format="{}{Count}"
+                                                              MappingName="Quantity"
+                                                              SummaryType="DoubleAggregate" />
+                                <syncfusion:GridSummaryColumn Name="TotalQuantity"
+                                                              Format="{}{Sum:c}"
+                                                              MappingName="Cost"
+                                                              SummaryType="DoubleAggregate" />
+                                <syncfusion:GridSummaryColumn Name="TotalCost"
+                                                              Format="{}{Sum:c}"
+                                                              MappingName="Cost"
+                                                              SummaryType="DoubleAggregate" />
+                                <syncfusion:GridSummaryColumn Name="TotalCash"
+                                                              Format="{}{Sum:c}"
+                                                              MappingName="Cost"
+                                                              SummaryType="DoubleAggregate" />
+                                <syncfusion:GridSummaryColumn Name="TotalCredit"
+                                                              Format="{}{Sum:c}"
+                                                              MappingName="Cost"
+                                                              SummaryType="DoubleAggregate" />
+                            </syncfusion:GridTableSummaryRow.SummaryColumns>
+                        </syncfusion:GridTableSummaryRow>
+                    </syncfusion:SfDataGrid.TableSummaryRows>
+
+                </syncfusion:SfDataGrid>
+                <Label Grid.Row="2" 
+                       Grid.Column="0" 
+                       Text="Cash Denominations" 
+                       FontSize="Small"/>
+                <Button Text="Save"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Command="{Binding AddNewHawkerSaleCommand}"/>
+                <Grid Grid.Row="3" Grid.ColumnSpan="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="2000 X " Grid.Row="0" Grid.Column="0" />
+                    <Label Text="500 X " Grid.Row="1" Grid.Column="0" />
+                    <Label Text="200 X " Grid.Row="2" Grid.Column="0" />
+                    <Label Text="100 X " Grid.Row="3" Grid.Column="0" />
+                    <Label Text="50 X " Grid.Row="0" Grid.Column="3" />
+                    <Label Text="20 X " Grid.Row="1" Grid.Column="3" />
+                    <Label Text="10 X " Grid.Row="2" Grid.Column="3" />
+                    <Label Text="5 X " Grid.Row="0" Grid.Column="6" />
+                    <Label Text="2 X " Grid.Row="1" Grid.Column="6" />
+                    <Label Text="1 X " Grid.Row="2" Grid.Column="6" />
+
+                    <Entry IsEnabled="False" Text="{Binding Totalof2Th, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof5H, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2H, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof1H, StringFormat= {}{0:C}}" Grid.Row="3" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof50, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="5" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof20, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="5" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof10, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof5, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="8" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2Th}" Grid.Row="0" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf5H}" Grid.Row="1" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2H}" Grid.Row="2" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf1H}" Grid.Row="3" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf50}" Grid.Row="0" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf20}" Grid.Row="1" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf10}" Grid.Row="2" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf5}" Grid.Row="0" Grid.Column="7" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2}" Grid.Row="1" Grid.Column="7" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf1}" Grid.Row="2" Grid.Column="7" />
+                    <Label  Text="Total = " Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" HorizontalTextAlignment="End"/>
+                    <Entry ReturnType="Next" Text="{Binding Total}" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3"/>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

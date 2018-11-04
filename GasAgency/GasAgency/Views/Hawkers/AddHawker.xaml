@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.AddHawker"
+             Title="Add Hawker">
+    <ContentPage.Content>
+        <Grid Padding="50,10,50,10"
+              VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Address Line 1"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Address Line 2"/>
+            <Label Grid.Row="3" Grid.Column="0" Text="Phone"/>
+            <Label Grid.Row="4" Grid.Column="0" Text="Mobile"/>
+            <Label Grid.Row="5" Grid.Column="0" Text="Date of Joining"/>
+            
+            <Label Grid.Row="0" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="1" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="2" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="3" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="4" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="5" Grid.Column="1" Text=" : "/>
+            
+            <Entry Grid.Row="0" Grid.Column="2" Text="{Binding Name}"/>
+            <Entry Grid.Row="1" Grid.Column="2" Text="{Binding AddressLine1}"/>
+            <Entry Grid.Row="2" Grid.Column="2" Text="{Binding AddressLine2}"/>
+            <Entry Keyboard="Numeric" MaxLength="10" Grid.Row="3" Grid.Column="2" Text="{Binding Phone}"/>
+            <Entry Keyboard="Numeric" MaxLength="10" Grid.Row="4" Grid.Column="2" Text="{Binding Mobile}"/>
+            <DatePicker Grid.Row="5" Grid.Column="2" Date="{Binding JoiningDate}"/>
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="6" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Button  Command="{Binding ClearTappedCommand}" Text="Clear"/>
+                <Button  Command="{Binding CreateHawkerCommand}" Text="Save"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

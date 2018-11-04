@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             x:Class="GasAgency.Views.CreditDetails">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DatePicker Grid.Row="0" Grid.Column="0" HorizontalOptions="End"/>
+            <syncfusion:SfDataGrid x:Name="creditsDataGrid"
+                                   ItemsSource="{Binding CreditDetails}" 
+                                   ColumnSizer="Star" 
+                                   AutoGenerateColumns="False"
+                                   Grid.Row="1" >
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn HeaderText="Client Name"
+                                               MappingName="Client.Name" />
+                    <syncfusion:GridTextColumn HeaderText="Credit"
+                                               MappingName="Credit" />
+                    <syncfusion:GridTextColumn HeaderText="Deposit" 
+                                               MappingName="Deposit" />
+                    <syncfusion:GridTextColumn HeaderText="Balance"
+                                               MappingName="Balance" />
+                </syncfusion:SfDataGrid.Columns>
+                <syncfusion:SfDataGrid.TableSummaryRows>
+                    <syncfusion:GridTableSummaryRow Title="Today's Total Credit : {TotalCredit}"
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True">
+                        <syncfusion:GridTableSummaryRow.SummaryColumns>
+                            <syncfusion:GridSummaryColumn Name="TotalCredit"
+                                                          Format="{}{Sum}"
+                                                          MappingName="Balance"
+                                                          SummaryType="DoubleAggregate" />                            
+                        </syncfusion:GridTableSummaryRow.SummaryColumns>
+                    </syncfusion:GridTableSummaryRow>
+                </syncfusion:SfDataGrid.TableSummaryRows>
+
+            </syncfusion:SfDataGrid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

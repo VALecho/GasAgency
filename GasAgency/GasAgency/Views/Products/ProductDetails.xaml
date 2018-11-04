@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Products.ProductDetails">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding UpdateProductCommand}"/>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteProductCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Padding="50,10,50,10"
+              VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Description"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Cost"/>
+            <Label Grid.Row="3" Grid.Column="0" Text="Effective Date of Cost"/>
+
+            <Label Grid.Row="0" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="1" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="2" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="3" Grid.Column="1" Text=" : "/>
+
+            <Entry IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="0" Grid.Column="2" Text="{Binding CurrentProduct.Name}"/>
+            <Editor IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Text="{Binding CurrentProduct.Description}"/>
+            <Entry IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="2" Grid.Column="2" Text="{Binding CurrentProductCost.Cost}"/>
+            <DatePicker IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Date="{Binding CurrentProductCost.EffectiveFrom}"/>
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="4" IsVisible="{Binding IsEnabled, Mode=TwoWay}" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Button  Command="{Binding ClearTappedCommand}" Text="Clear"/>
+                <Button  Command="{Binding CreateProductCommand}" Text="Save"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

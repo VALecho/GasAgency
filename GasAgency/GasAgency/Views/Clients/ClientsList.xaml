@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Clients.ClientsList"
+             x:Name="ClientListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddClientTappedCommand}"/>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteClientTappedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ListView ItemsSource="{Binding Clients}"
+              HasUnevenRows="True"
+              ItemTapped="ListViewItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="20">
+                        <Label Text="Name : " HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center"/>
+                        <Grid HorizontalOptions="EndAndExpand">
+                            <Label Grid.Row="0" Grid.Column="0" Text="Phone No  : " />
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Phone}"/>
+                            <Label Grid.Row="1" Grid.Column="0" Text="Mobile No : " />
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Mobile}"/>
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

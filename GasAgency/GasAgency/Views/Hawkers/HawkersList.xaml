@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Hawkers.HawkersList"
+             x:Name="HawkerListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddHawkerTappedCommand}"/>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteHawkerTappedCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ListView ItemsSource="{Binding Hawkers}"
+              HasUnevenRows="True"
+              ItemTapped="ListViewItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout VerticalOptions="Center" Orientation="Horizontal" Padding="20">
+                        <Label Text="Name : " HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Name}" HorizontalTextAlignment="Center"/>
+                        <Grid HorizontalOptions="EndAndExpand">
+                            <Label Grid.Row="0" Grid.Column="3" Text="Phone No  : " />
+                            <Label Grid.Row="0" Grid.Column="3" Text="{Binding Phone}"/>
+                            <Label Grid.Row="1" Grid.Column="3" Text="Mobile No : " />
+                            <Label Grid.Row="1" Grid.Column="3" Text="{Binding Mobile}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HorizontalTextAlignment="Center" Text="Date of Joining : "/>
+                            <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalTextAlignment="Center" Text="{Binding JoiningDate}"/>
+                        </Grid>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

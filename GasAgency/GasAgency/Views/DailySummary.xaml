@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.DailySummary"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+             xmlns:cash="clr-namespace:GasAgency.CustomControl"
+             Title="SUMMARY">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style TargetType="Label"
+                   x:Key="styleForCashLabel">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1.25*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DatePicker Grid.Row="0" Grid.Column="0" HorizontalOptions="End"/>
+            <syncfusion:SfDataGrid x:Name="summaryDataGrid"
+                                   ItemsSource="{Binding SummaryReport}" 
+                                   ColumnSizer="Star"
+                                   AutoGenerateColumns="False"
+                                   Grid.Row="1" >
+                <syncfusion:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+                    <syncfusion:GridTextColumn MappingName="SummaryType" />
+                    <syncfusion:GridTextColumn HeaderText="14.2 KG"
+                                               MappingName="MediumCylinder" />
+                    <syncfusion:GridTextColumn HeaderText="20 KG" 
+                                               MappingName="LargeCylinder" />
+                    <syncfusion:GridTextColumn HeaderText="5 KG"
+                                               MappingName="SmallCylinder" />
+                </syncfusion:SfDataGrid.Columns>
+                <syncfusion:SfDataGrid.TableSummaryRows>
+                    <syncfusion:GridTableSummaryRow Title="Total = {MediumCylinder}"
+                                                    Position="Bottom"
+                                                    ShowSummaryInRow="True" >
+                        <syncfusion:GridTableSummaryRow.SummaryColumns>
+                            <syncfusion:GridSummaryColumn Name="MediumCylinder"
+                                                          Format="{}{Sum}"
+                                                          MappingName="MediumCylinder"
+                                                          SummaryType="DoubleAggregate" />
+                            <syncfusion:GridSummaryColumn Name="LargeCylinder"
+                                                          Format="{}{Sum}"
+                                                          MappingName="LargeCylinder"
+                                                          SummaryType="DoubleAggregate" />
+                            <syncfusion:GridSummaryColumn Name="SmallCylinder"
+                                                          Format="{}{Sum}"
+                                                          MappingName="SmallCylinder"
+                                                          SummaryType="DoubleAggregate" />
+                        </syncfusion:GridTableSummaryRow.SummaryColumns>
+                    </syncfusion:GridTableSummaryRow>
+                </syncfusion:SfDataGrid.TableSummaryRows>
+            </syncfusion:SfDataGrid>
+            <ScrollView Grid.Row="2">
+                <Grid>
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="FontSize" Value="Small"/>
+                                <Setter Property="VerticalOptions" Value="Center"/>
+                            </Style>
+                            <Style TargetType="Entry">
+                                <Setter Property="FontSize" Value="Small"/>
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="2000 X " Grid.Row="0" Grid.Column="0" />
+                    <Label Text="500 X " Grid.Row="1" Grid.Column="0" />
+                    <Label Text="200 X " Grid.Row="2" Grid.Column="0" />
+                    <Label Text="100 X " Grid.Row="3" Grid.Column="0" />
+                    <Label Text="50 X " Grid.Row="0" Grid.Column="3" />
+                    <Label Text="20 X " Grid.Row="1" Grid.Column="3" />
+                    <Label Text="10 X " Grid.Row="2" Grid.Column="3" />
+                    <Label Text="5 X " Grid.Row="0" Grid.Column="6" />
+                    <Label Text="2 X " Grid.Row="1" Grid.Column="6" />
+                    <Label Text="1 X " Grid.Row="2" Grid.Column="6" />
+
+                    <Entry IsEnabled="False" Text="{Binding Totalof2Th, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof5H, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2H, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof1H, StringFormat= {}{0:C}}" Grid.Row="3" Grid.Column="2" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof50, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="5" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof20, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="5" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof10, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof5, StringFormat= {}{0:C}}" Grid.Row="0" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2, StringFormat= {}{0:C}}" Grid.Row="1" Grid.Column="8" />
+                    <Entry IsEnabled="False" Text="{Binding Totalof2, StringFormat= {}{0:C}}" Grid.Row="2" Grid.Column="8" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2Th}" Grid.Row="0" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf5H}" Grid.Row="1" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2H}" Grid.Row="2" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf1H}" Grid.Row="3" Grid.Column="1" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf50}" Grid.Row="0" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf20}" Grid.Row="1" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf10}" Grid.Row="2" Grid.Column="4" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf5}" Grid.Row="0" Grid.Column="7" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf2}" Grid.Row="1" Grid.Column="7" />
+                    <Entry HorizontalTextAlignment="Center" ReturnType="Next" Text="{Binding NoOf1}" Grid.Row="2" Grid.Column="7" />
+                    <Label  Text="Total = " Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="3" HorizontalTextAlignment="End"/>
+                    <Entry ReturnType="Next" Text="{Binding Total}" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="3"/>
+
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

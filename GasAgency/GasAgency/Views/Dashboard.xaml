@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Dashboard">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+            <Style TargetType="StackLayout">
+                <Setter Property="Spacing" Value="0"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Margin" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid BackgroundColor="#396ec3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Cell 1-->
+            <StackLayout Grid.Row="0" Grid.Column="0">
+                <Image Source="office.png"/>
+                <Label Text="OFFICE" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CompanyTabTapCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Image Source="vr.png" Grid.Row="0" Grid.Column="1"/>
+
+            <!--Cell 2-->
+            <StackLayout Grid.Row="0" Grid.Column="2">
+                <Image Source="hocker.png"/>
+                <Label Text="HAWKERS"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding HawkersTabTapCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Image Source="hr.png" Grid.Row="1" Grid.Column="0"/>
+
+
+            <!--Cell 3-->
+            <StackLayout Grid.Row="2" Grid.Column="0">
+                <Image Source="credit.png"/>
+                <Label Text="CREDIT"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding CreditTabTapCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <Image Source="vr.png" Grid.Row="2" Grid.Column="1"/>
+
+            <!--Cell 4-->
+            <StackLayout Grid.Row="2" Grid.Column="2">
+                <Image Source="summary.png"/>
+                <Label Text="SUMMARY"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding SummaryTabTapCommand}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+            
+            <Image Grid.Row="3" 
+                   Grid.Column="3" 
+                   HorizontalOptions="EndAndExpand" 
+                   VerticalOptions="EndAndExpand" 
+                   Source="gear.png"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   Margin="0,0,10,10">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AppSettingsTappedCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Image Source="hr.png" Grid.Row="1" Grid.Column="2"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

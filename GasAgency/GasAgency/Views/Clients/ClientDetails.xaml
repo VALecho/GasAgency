@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.Clients.ClientDetails">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Command="{Binding UpdateClientCommand}"/>
+        <ToolbarItem Text="Delete" Command="{Binding DeleteClientCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Padding="50,10,50,10"
+              VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Name"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Address Line 1"/>
+            <Label Grid.Row="2" Grid.Column="0" Text="Address Line 2"/>
+            <Label Grid.Row="3" Grid.Column="0" Text="Phone"/>
+            <Label Grid.Row="4" Grid.Column="0" Text="Mobile"/>
+
+            <Label Grid.Row="0" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="1" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="2" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="3" Grid.Column="1" Text=" : "/>
+            <Label Grid.Row="4" Grid.Column="1" Text=" : "/>
+
+            <Entry IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="0" Grid.Column="2" Text="{Binding CurrentClient.Name}"/>
+            <Entry IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="1" Grid.Column="2" Text="{Binding CurrentClient.AddressLine1}"/>
+            <Entry IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="2" Grid.Column="2" Text="{Binding CurrentClient.AddressLine2}"/>
+            <Entry Keyboard="Numeric" IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Text="{Binding CurrentClient.Phone}"/>
+            <Entry Keyboard="Numeric" IsEnabled="{Binding IsEnabled, Mode=TwoWay}" Grid.Row="4" Grid.Column="2" Text="{Binding CurrentClient.Mobile}"/>
+            <StackLayout Grid.ColumnSpan="3" Grid.Row="5" IsVisible="{Binding IsEnabled, Mode=TwoWay}" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Button  Command="{Binding ClearTappedCommand}" Text="Clear"/>
+                <Button  Command="{Binding CreateClientCommand}" Text="Save"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

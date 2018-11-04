@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.NewExpense"
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:numeric="clr-namespace:Syncfusion.SfNumericUpDown.XForms;assembly=Syncfusion.SfNumericUpDown.XForms">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Description: " 
+                       Grid.Row="0" 
+                       Grid.Column="0"/>
+                <Entry HeightRequest="40" 
+                       x:Name="comboDescription"
+                       Grid.Row="0" Grid.Column="1"
+                       Text="{Binding Description}"/>
+
+                <Label Text="Cost: " 
+                       Grid.Row="1" 
+                       Grid.Column="0"/>
+                <numeric:SfNumericUpDown x:Name="numericCost" 
+                                         Grid.Row="1" 
+                                         Grid.Column="1"
+                                         SpinButtonAlignment="Right"
+                                         Value="{Binding Cost}"/>
+                
+                <StackLayout Orientation="Horizontal"
+                             Grid.Row="3"
+                             Grid.ColumnSpan="2"
+                             HorizontalOptions="EndAndExpand">
+
+                    <Button Text="Cancel" 
+                            CornerRadius="10" 
+                            Margin="10, 0, 10, 10" 
+                            BackgroundColor="#396ec3"
+                            TextColor="White" 
+                            HorizontalOptions="End"
+                            Grid.Row="1" 
+                            Command="{Binding CancelCommand}"/>
+                    <Button Text="Save" 
+                            CornerRadius="10" 
+                            Margin="10, 0, 10, 10" 
+                            BackgroundColor="#396ec3"
+                            TextColor="White" 
+                            HorizontalOptions="End"
+                            Grid.Row="1" 
+                            Command="{Binding SaveCommand}"/>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

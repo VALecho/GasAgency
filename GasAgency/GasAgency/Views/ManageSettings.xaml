@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GasAgency.Views.ManageSettings">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10">
+            <Frame HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="manageclients.png"/>
+                    <Label Text="Manage Clients"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ManageClientsTappedCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="manageclients.png"/>
+                    <Label Text="Manage Products"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ManageProductsTappedCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="manageclients.png"/>
+                    <Label Text="Manage Product Cost"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ManageProductCostTappedCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame HasShadow="True">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="manageclients.png"/>
+                    <Label Text="Manage Hawkers"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ManageHawkersTappedCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

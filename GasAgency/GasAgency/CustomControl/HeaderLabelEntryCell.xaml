@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="GasAgency.CustomControl.HeaderLabelEntryCell"
+      xmlns:customEntry="clr-namespace:GasAgency.CustomControl">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <Label HorizontalTextAlignment="Start" Grid.Column="0" Text="{Binding LabelText}" FontSize="Medium" TextColor="Black"/>
+    <customEntry:ExtendedEntry Grid.Column="1" Text="{Binding EntryText}" FontSize="Medium" ReturnType="Next" Placeholder="0" Keyboard="Numeric"/>
+</Grid>

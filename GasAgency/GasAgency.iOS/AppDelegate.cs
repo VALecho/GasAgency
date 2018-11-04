@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using Syncfusion.XForms.iOS.TextInputLayout;
 using UIKit;
 
 namespace GasAgency.iOS
@@ -22,11 +23,10 @@ namespace GasAgency.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            new Syncfusion.XForms.iOS.ComboBox.SfComboBoxRenderer();
             global::Xamarin.Forms.Forms.Init();
-            Syncfusion.XForms.iOS.TabView.SfTabViewRenderer.Init();
-            Syncfusion.SfDataGrid.XForms.iOS.SfDataGridRenderer.Init();
+            SfTextInputLayoutRenderer.Init();
             LoadApplication(new App());
+
             return base.FinishedLaunching(app, options);
         }
     }
